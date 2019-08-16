@@ -1,4 +1,4 @@
-﻿@model GigHub.ViewModels.GigsViewModel
+﻿@model GigHub.Core.ViewModels.GigsViewModel
 
 @{
     ViewBag.Title = "Home Page";
@@ -29,7 +29,9 @@
             </div>
             <div class="details">
                 <span class="artist">
-                    @gig.Artist.Name
+                    <a href="@Url.Action("Details", "Gigs", new { gigId = gig.Id })">
+                        @gig.Artist.Name
+                    </a>
 
                     @if(gig.IsCanceled)
                     {
@@ -42,11 +44,15 @@
                     }
                     
                 </span>
-                <span class="genre">@gig.Genre.name</span>
+                <span class="genre">@gig.Genre.Name</span>
                 
                 @if (Model.ShowActions && !gig.IsCanceled)
                 {
-                    <button data-gig-id="@gig.Id" class="btn btn-default btn-sm pull-right js-toggle-attendance">Going?</button>
+                    <button 
+                            data-gig-id="@gig.Id"
+                            class="btn @(Model.Attendances.Contains(gig.Id)?"btn-info" : "btn-default")  btn-sm pull-right js-toggle-attendance">
+                        Going?
+                    </button>
                 }
                 
             </div>
@@ -73,6 +79,7 @@
             });
 
             $(".js-toggle-follow").click(function (e) {
+                debugger;
                 var button = $(e.target);
                 $.post("/api/following", { followeeId: button.attr("data-user-id") })
                 //button.text(button.attr("data-user-id"))

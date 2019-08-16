@@ -1,4 +1,4 @@
-﻿@model IEnumerable<GigHub.Models.Gig>
+﻿@model IEnumerable<GigHub.Core.Models.Gig>
 
 @{
     ViewBag.Title = "Mine";
@@ -19,7 +19,7 @@
                     @gig.Venue
                 </span>
                 <span class="genre">
-                    @gig.Genre.name
+                    @gig.Genre.Name
                 </span>
                 <div class="actions">
                     <a href="@Url.Action("Edit", "Gigs", new {id=gig.Id })">
@@ -39,6 +39,7 @@
     <script>
         $(document).ready(function () {
             $(".js-cancel-gig").click(function (e) {
+                debugger;
                 var link = $(e.target);
 
                 bootbox.dialog({

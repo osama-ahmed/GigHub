@@ -23,7 +23,6 @@ namespace GigHub.Tests.Controllers.Api
 
             _controller = new GigsController(mockUOW.Object);
             _userId = "1";
-            _controller.
         }
     }
 }

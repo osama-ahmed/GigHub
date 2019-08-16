@@ -221,3 +221,17 @@ h6,
     padding:6px 12px; 
     height: 250px;
 }
+
+.gig-details{
+    position:relative;
+}
+
+.artist-name{
+    font-size:32px;
+}
+
+.following-label{
+    position: absolute;
+    left: 230px;
+    top: 5px;
+}

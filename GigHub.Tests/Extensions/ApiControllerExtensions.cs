@@ -16,7 +16,7 @@ namespace GigHub.Tests.Extensions
 
             var principal = new GenericPrincipal(identity, null);
 
-            controller.User = principal;
+            //controller.User = principal;
         }
     }
 }
